@@ -38,26 +38,44 @@
 // }
 
 
+// 第一种解法
+// var maxDiameter = 0;
+// var diameterOfBinaryTree = function(root) {
+//   maxDiameter = 0;
+//   traverse(root);
+//   return maxDiameter
+// };
+
+// function traverse(root){
+//   if(!root) {
+//     return;
+//   }
+//   // 分别找出每个点的左右深度
+//   var leftMax = maxDepth(root.left)
+//   var rightMax = maxDepth(root.right)
+//   maxDiameter = Math.max(maxDiameter, leftMax + rightMax);
+
+//   traverse(root.left);
+//   traverse(root.right);
+//   // 最大直径等于左右深度相加
+// }
+
+// // 二叉树最大深度
+// function maxDepth(root){
+//   if(!root){
+//     return 0;
+//   }
+//   var leftDepth = maxDepth(root.left);
+//   var rightDepth = maxDepth(root.right);
+//   return Math.max(leftDepth, rightDepth) + 1;
+// }
+
 var maxDiameter = 0;
 var diameterOfBinaryTree = function(root) {
   maxDiameter = 0;
-  traverse(root);
+  maxDepth(root);
   return maxDiameter
 };
-
-function traverse(root){
-  if(!root) {
-    return;
-  }
-  // 分别找出每个点的左右深度
-  var leftMax = maxDepth(root.left)
-  var rightMax = maxDepth(root.right)
-  maxDiameter = Math.max(maxDiameter, leftMax + rightMax);
-
-  traverse(root.left);
-  traverse(root.right);
-  // 最大直径等于左右深度相加
-}
 
 // 二叉树最大深度
 function maxDepth(root){
@@ -66,5 +84,7 @@ function maxDepth(root){
   }
   var leftDepth = maxDepth(root.left);
   var rightDepth = maxDepth(root.right);
+  maxDiameter = Math.max(maxDiameter, leftDepth + rightDepth);
+  
   return Math.max(leftDepth, rightDepth) + 1;
 }
